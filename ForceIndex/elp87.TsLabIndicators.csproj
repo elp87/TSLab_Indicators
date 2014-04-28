@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="elp87.Helpers">
+      <HintPath>libs\elp87.Helpers.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,6 +48,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bar2TradeConverter.cs" />
     <Compile Include="DetonationIndex.cs" />
     <Compile Include="ForceIndex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
