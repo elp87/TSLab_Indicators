@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Windows Desktop
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForceIndex", "ForceIndex\ForceIndex.csproj", "{983A5A85-9A4E-4206-B6B6-6F7526910D5F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "elp87.TsLabIndicators", "ForceIndex\elp87.TsLabIndicators.csproj", "{983A5A85-9A4E-4206-B6B6-6F7526910D5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

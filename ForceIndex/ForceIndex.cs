@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using TSLab.Script;
 using TSLab.Script.Handlers;
-using TSLab.DataSource;
 using TSLab.Script.Helpers;
 
-namespace elp87.TsLabIndicators
+namespace elp87.TSLab.Indicators
 {
     public abstract class ForceIndex
     {
@@ -41,7 +40,7 @@ namespace elp87.TsLabIndicators
         public IList<double> Execute(ISecurity source)
         {
             IList<double> clFI = calcForceIndex(source);
-            return Series.SMA(clFI, Period);
+            return Series.EMA(clFI, Period);
         }
     }
 }

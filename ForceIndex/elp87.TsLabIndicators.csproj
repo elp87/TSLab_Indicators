@@ -7,8 +7,8 @@
     <ProjectGuid>{983A5A85-9A4E-4206-B6B6-6F7526910D5F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ForceIndex</RootNamespace>
-    <AssemblyName>ForceIndex</AssemblyName>
+    <RootNamespace>elp87.TSLab.Indicators</RootNamespace>
+    <AssemblyName>TSLabIndicators</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DetonationIndex.cs" />
     <Compile Include="ForceIndex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
