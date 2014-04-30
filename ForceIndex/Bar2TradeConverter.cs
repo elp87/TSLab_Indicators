@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using TSLab.Script;
 using TSLab.Script.Handlers;
-using TSLab.Script.Helpers;
 using elp87.Helpers;
 
 namespace elp87.TSLab.Indicators

@@ -50,7 +50,9 @@
   <ItemGroup>
     <Compile Include="Bar2TradeConverter.cs" />
     <Compile Include="DetonationIndex.cs" />
+    <Compile Include="ElderImpulse_DL.cs" />
     <Compile Include="ForceIndex.cs" />
+    <Compile Include="Helpers\IndicatorDay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
