@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using TSLab.Script;
 using TSLab.Script.Handlers;
@@ -11,7 +10,7 @@ using elp87.TSLab.Indicators.Helpers;
 namespace elp87.TSLab.Indicators
 {
     [HandlerName("Элдер Импульс (выгрузка)")]
-    public class ElderImpulse_DL : IBar2DoubleHandler, IContextUses
+    public class ElderImpulse_DL : IBar2DoubleHandler
     {
         [HandlerParameter(true, "10", Max = "20", Min = "2", Step = "1")]
         public int EMAPeriod { get; set; }
@@ -51,6 +50,7 @@ namespace elp87.TSLab.Indicators
                 checked { ++index2; }
             }
             int index3 = 0;
+            
             while (index3 < source.ClosePrices.Count)
             {
                 double num2 = -5.0;
@@ -70,12 +70,6 @@ namespace elp87.TSLab.Indicators
                 elderList.Add(num2);
                 checked { ++index3; }
             }
-            Console.WriteLine("Кама-пуля");
-            Context.Log("Кама-пуля", 0x00FF00);
-            
-            
-            
-
 
             // Выгрузка данных
             int barCount = source.Bars.Count;
@@ -85,11 +79,13 @@ namespace elp87.TSLab.Indicators
             int barEnumerator = barCount -1;
             int indEnumerator = indCount - 1;
             int loadEnumerator = loadCount - 1;
+
             List<IndicatorDay> dayList = new List<IndicatorDay>();
-            while (loadCount > 0)
+            while (loadEnumerator > 0)
             {
                 IndicatorDay day = new IndicatorDay()
                 {
+
                     Date = source.Bars[barEnumerator].Date,
                     Value = elderList[indEnumerator]
                 };
@@ -99,14 +95,16 @@ namespace elp87.TSLab.Indicators
                 indEnumerator--;
                 loadEnumerator--;
             }
-            Console.WriteLine("Пыщь-пыщь");
+            dayList.Sort();
+
+            CSVWriter csv = new CSVWriter(dayList);
+            csv.AddColumnProperty("Date", "Date");
+            csv.AddColumnProperty("Value", "Value");
+            csv.SaveFile(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Elder" + dayList.Min(day => day.Date).ToString("yyMMdd") + "_-_" + dayList.Max(day => day.Date).ToString("yyMMdd") + ".csv");
+
             return elderList;
         }
 
-        public IContext Context
-        {
-            get;
-            set;
-        }
+        
     }
 }
