@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 using TSLab.Script;
 using TSLab.Script.Handlers;
 using TSLab.Script.Helpers;
@@ -97,10 +98,25 @@ namespace elp87.TSLab.Indicators
             }
             dayList.Sort();
 
-            CSVWriter csv = new CSVWriter(dayList);
-            csv.AddColumnProperty("Date", "Date");
-            csv.AddColumnProperty("Value", "Value");
-            csv.SaveFile(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Elder" + dayList.Min(day => day.Date).ToString("yyMMdd") + "_-_" + dayList.Max(day => day.Date).ToString("yyMMdd") + ".csv");
+            XElement headX = new XElement("FilterSet");
+            XElement paramX = new XElement("Params",
+                new XElement("EMAPeriod", EMAPeriod),
+                new XElement("MACD1Period", MACD1Period),
+                new XElement("MACD2Period", MACD2Period),
+                new XElement("MACDSignalPeriod", MACDSignalPeriod)
+                );
+            headX.Add(paramX);
+
+            XElement daysX = new XElement("Days");
+            foreach (IndicatorDay day in dayList)
+            {
+                daysX.Add(new XElement("Day",
+                    new XElement("Date", day.Date),
+                    new XElement("Value", day.Value)
+                    ));
+            }
+            headX.Add(daysX);
+            headX.Save(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Elder" + dayList.Min(day => day.Date).ToString("yyMMdd") + "_-_" + dayList.Max(day => day.Date).ToString("yyMMdd") + ".xml");
 
             return elderList;
         }
